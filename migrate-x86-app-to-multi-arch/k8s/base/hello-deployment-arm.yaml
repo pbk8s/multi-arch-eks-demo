@@ -17,11 +17,16 @@ spec:
         tier: web
     spec:
       nodeSelector:
-        kubernetes.io/arch: amd64
+        kubernetes.io/arch: arm64
+      tolerations:
+        - key: kubernetes.io/arch
+          operator: Equal
+          value: arm64
+          effect: NoSchedule
     spec:
       containers:
       - name: hello
-        image: 688080325088.dkr.ecr.eu-west-1.amazonaws.com/x86-app:latest
+        image: 688080325088.dkr.ecr.eu-west-1.amazonaws.com/arm-app:latest
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
