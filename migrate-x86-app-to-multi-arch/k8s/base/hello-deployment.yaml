@@ -16,12 +16,9 @@ spec:
         app: hello
         tier: web
     spec:
-      nodeSelector:
-        kubernetes.io/arch: amd64
-    spec:
       containers:
       - name: hello
-        image: 688080325088.dkr.ecr.eu-west-1.amazonaws.com/x86-app:latest
+        image: x86-image
         imagePullPolicy: Always
         ports:
           - containerPort: 8080
@@ -37,3 +34,5 @@ spec:
         resources:
           requests:
             cpu: 300m
+      nodeSelector:
+        kubernetes.io/arch: amd64
